@@ -32,7 +32,7 @@ When an AC sine wave and a DC source are placed together, the DC source is used 
 
 $$V_{AVE} = Voltage (average) = V_{DC}$$
 $$V_{RRMS} = Voltage Ripple Root mean square = V_{AC}$$
-$$V^2_{RMS} = V^2_{DC} + V^2_{AC}$$ 
+$$V^2_{RMS} = V^2_{DC} + V^2_{AC}$$
 
 # Circuit elements
 
@@ -110,7 +110,7 @@ Mainly used in 3 phase applications
 ### 2 wires: (or low voltage release)
 
 Consists of typically on pilot device and output device connected directly
-Maintains original state before any action is applied to the pilot device (ex: sump pump, lights in a house) 
+Maintains original state before any action is applied to the pilot device (ex: sump pump, lights in a house)
 Low voltage release: the electrical devices continue to operate in their original state if power is lost. Examples:: sump pump, lights
 
 ### 3 wires: (or low voltage protection)
@@ -282,7 +282,7 @@ $$rf = 48\%$$
 short -> short the supply
 open -> half way rectifier
 
-## Three Phase Rectifier
+## Three Phase Half Way Rectifier
 
 - majority of industrial applications need large amounts of dc power
 - used for driving a dc motor, or as input to a VFDs (variable frequency drive)
@@ -341,3 +341,77 @@ $$Vab = Vave (don't care)$$
 | $I_{DC}$   | $(1 / \pi) * I_{peak}$ |                             |                            |                   |                    |
 | $rf$       | $121\%$                | $48\%$                      | $48\%$                     | $17.7\%$          | $4.5\%$            |
 *Note*: $$V_{RMS} = V_{Source}$$
+
+# Zener Diode
+
+- special device designed to operate in reverse polarity
+- when this diode operates in this reverse direction, it is known as the Zener region.
+- usually if a diode operates at a high voltage in the Zener region, it would be destroyed; but the zener diode is designed to operate in this region.
+- the supply voltage must be greater than the voltage of the Zener diode in order for it to work.
+- maintain 12V voltage
+
+**Graph**:
+
+**symbol**:
+
+**Example**:
+
+Find I_2 for the circuit
+
+- Step 1: find the resistance for R2 and R3
+$$R_{2,3} = R_2 + R_3 = 20 + 1000 = 1.2k\Omega$$
+- Step 2: Find 
+$$I_{2,3} = {V_{2,3} \over R_{2,3}} = {V_{z} \over R_{2,3}} = {12V \over 1.2k\Omega} = 0.01A = 10m$$
+- Step 3: If there is 12 V_dc for the paprallel branches, that means that R_1 sees
+$$(20V - 12V) = 8V = V_1$$
+$$I_1 = I_T = {V_1/R_1} = {8V / 100\Omega} = 80mA$$
+- Step 4: To find current though the zener diode, we subtract I_{2,3} from I_1
+$$I_1 = I_2 + I_{2,3}$$
+$$I_2 = I_1  - I_{2,3}$$
+$$I_z = 80mA - 10mA = 70mA$$
+
+# Transistors (BJT: Bipolar Junction Transistor)
+
+- made by connecting 3 pieces of semiconductor material
+- there are two basic types of transistors: NPN and PNP
+- it is an electric valve that allow current flow through the collector and emitter, when where is a current flow through the base & emitter
+- a small current flow of say 1mA through the base and emitter, can have the collector & emitter flow around 100mA
+- with an increase or decrease in base & emitter current, the collector & emitter current also increase and decrease
+- Applications
+    - switches
+    - amplifiers
+
+- 3 elements: base, collector, and emitter; base->emitter is the trigger for flow in collector & emitter.
+- NPN: Base(+); PNP: Base(-)
+- the emitter is only on the other side of arrow
+- current flow from P to N
+- need to switch batteries polarity when changing NPN to PNP
+
+
+**Physical layout**:
+
+- NPN (more common)
+
+- PNP
+
+# SCR (Silicon Controlled Rectifier)
+
+- thyristors, specifically SCRs are the most used and oldest semiconductor power control devices in industry today
+- used in primary power control in all DC motors, and in large AC motors drives
+- used in mining equipment
+- is a three terminal, 4 layers semiconductor device primarily used as a switching element or device
+- SCR is a rectifier, only allows current flow in one direction like a diode
+- basic difference is that it will not conduct current or forward bias until its gate receives a positive pulse of current
+- **Commutation**: turning an SCR OFF after it has been conducting current, 3 ways to commutate SCR
+    - Natural commutation: push NO button, creating a short across the SCR, then the SCR is OFF because of the short
+    - Class F commutation: the SCR is turned OFF automatically by AC source, it need to be turned on after each AC cycle
+    - Forced commutation: by using capacitor connected in para with the CSR
+
+- Summary:
+    - the SCR is OFF, until an initial gate current pulse
+    - the SCR is ON with a gate pulse
+    - once its ON, the SCR remains on until the current flow through the anode and cathode is so low that it drops out of conduction
+
+**Symbol**
+
+**EXAM: everything up to this point**
